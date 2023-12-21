@@ -1,12 +1,13 @@
 import express from 'express'
+import router from './routers'
 
-const app = express();
-
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.get('/', (req, res) => {
-    console.log("test");
-    res.status(200);
-    res.json({message:"hello"});
-});
+  res.json({ message: "'backend_test'" })
+})
 
+app.use('/api', router)
 
-export default app;
+export default app
