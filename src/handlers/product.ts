@@ -1,5 +1,5 @@
 import prisma from '../db'
-
+import logger from '../logger';
 export const createProduct = async (req, res) => {
   try {
     await prisma.product.create({
@@ -14,7 +14,8 @@ export const createProduct = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in createProduct: ${e.message}`);
   }
 }
 export const associateProduct = async (req, res) => {
@@ -33,7 +34,8 @@ export const associateProduct = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in associateProduct: ${e.message}`);
   }
 }
 
@@ -46,7 +48,8 @@ export const getAllProducts = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in getAllProduct: ${e.message}`);
   }
 }
 export const updateProduct = async (req, res) => {
@@ -66,8 +69,8 @@ export const updateProduct = async (req, res) => {
     res.status(200)
   } catch (e) {
     console.log(e)
-    res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in updateProduct: ${e.message}`);
   }
 }
 export const deleteProduct = async (req, res) => {
@@ -82,7 +85,8 @@ export const deleteProduct = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in deleteProduct: ${e.message}`);
   }
 }
 export const filterProducts = async (req, res) => {
@@ -103,6 +107,7 @@ export const filterProducts = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in filterProducts: ${e.message}`);
   }
 }

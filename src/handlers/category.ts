@@ -1,5 +1,5 @@
 import prisma from '../db'
-
+import logger from '../logger';
 export const createCategory = async (req, res) => {
   try {
     const category = await prisma.category.create({  
@@ -12,7 +12,8 @@ export const createCategory = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in createCategory: ${e.message}`);
   }
 }
 export const getAllCategories = async (req, res) => {
@@ -23,7 +24,8 @@ export const getAllCategories = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in getAllCategories: ${e.message}`);
   }
 }
 export const editCategory = async (req, res) => {
@@ -41,6 +43,7 @@ export const editCategory = async (req, res) => {
   } catch (e) {
     console.log(e)
     res.status(500)
-    res.json({ error: e })
+    res.json({ error: "something happened" })
+    logger.error(`Error in editCategory: ${e.message}`);
   }
 }
