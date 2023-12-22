@@ -19,6 +19,7 @@ export const createProduct = async (req, res) => {
 }
 export const associateProduct = async (req, res) => {
   try {
+    
     const product = await prisma.product.update({
       data: {
         category_id: req.body.category_id
@@ -38,6 +39,7 @@ export const associateProduct = async (req, res) => {
 
 export const getAllProducts = async (req, res) => {
   try {
+    
     const products = await prisma.product.findMany({})
     res.json({ data: { products } })
     res.status(200)
@@ -49,13 +51,14 @@ export const getAllProducts = async (req, res) => {
 }
 export const updateProduct = async (req, res) => {
   try {
+    console.log(req.body.description+'ardababa')
     const product = await prisma.product.update({
       where: {
         product_id: req.params.id
       },
       data: {
-        description: req.body.product_description,
-        price: req.body.product_price,
+        description: req.body.description,
+        price: req.body.price,
         category_id: req.body.category_id
       }
     })
@@ -71,7 +74,7 @@ export const deleteProduct = async (req, res) => {
   try {
     const product = await prisma.product.delete({
       where: {
-        product_id: req.params.product_id
+        product_id: req.params.id
       }
     })
     res.json({ message: 'deleted', data: { product } })
@@ -95,7 +98,7 @@ export const filterProducts = async (req, res) => {
         ]
       }
     })
-    res.json({ message: 'deleted', data: { product } })
+    res.json({ message: 'query', data: { product } })
     res.status(200)
   } catch (e) {
     console.log(e)

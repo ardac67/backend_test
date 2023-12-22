@@ -10,20 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id               String   @id @default(uuid())
-  description      String?  @db.VarChar(100)
+model product {
+  product_id       String    @id @default(uuid())
+  description      String?   @db.VarChar(100)
   price            Float
-  Category         String
-  CreatedAt        DateTime @default(now())
-  belongtoCategory category @relation(fields: [id], references: [category_id])
-  category_id      String   @unique
-  updatedAt        DateTime @updatedAt
+  CreatedAt        DateTime  @default(now())
+  belongtoCategory category? @relation(fields: [category_id], references: [category_id])
+  category_id      String?   
+  updatedAt        DateTime  @updatedAt
 }
 
 model category {
   category_id   String    @id @default(uuid())
   category_name String    @db.VarChar(50)
   CreatedAt     DateTime  @default(now())
-  Product       Product[]
+  Product       product[]
 }
