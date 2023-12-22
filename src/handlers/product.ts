@@ -1,5 +1,7 @@
 import prisma from '../db'
 import logger from '../logger';
+
+//creates a products takes the product description, price and category id
 export const createProduct = async (req, res) => {
   try {
     await prisma.product.create({
@@ -15,9 +17,10 @@ export const createProduct = async (req, res) => {
     console.log(e)
     res.status(500)
     res.json({ error: "something happened" })
-    logger.error(`Error in createProduct: ${e.message}`);
+    logger.error(`Error in createProduct: ${e.message}`);//logs the errors
   }
 }
+//assigns a product to a category
 export const associateProduct = async (req, res) => {
   try {
     
@@ -38,7 +41,7 @@ export const associateProduct = async (req, res) => {
     logger.error(`Error in associateProduct: ${e.message}`);
   }
 }
-
+//returns all products without any filter
 export const getAllProducts = async (req, res) => {
   try {
     
@@ -52,6 +55,7 @@ export const getAllProducts = async (req, res) => {
     logger.error(`Error in getAllProduct: ${e.message}`);
   }
 }
+//returns a updated product with a specific id
 export const updateProduct = async (req, res) => {
   try {
     console.log(req.body.description+'ardababa')
@@ -73,6 +77,7 @@ export const updateProduct = async (req, res) => {
     logger.error(`Error in updateProduct: ${e.message}`);
   }
 }
+//deletes product with a specific id
 export const deleteProduct = async (req, res) => {
   try {
     const product = await prisma.product.delete({
@@ -89,6 +94,7 @@ export const deleteProduct = async (req, res) => {
     logger.error(`Error in deleteProduct: ${e.message}`);
   }
 }
+//filters products by description or category name
 export const filterProducts = async (req, res) => {
   try {
     const product = await prisma.product.findMany({

@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator"
-
+//some validation schema and it's error handler
 export const validationForProducts =['product_description','product_price']
 
 export const handleInputError = (req,res,next) => {

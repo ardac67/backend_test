@@ -1,7 +1,7 @@
 import { stat } from 'fs'
 import * as products from '../handlers/product'
 import supertest from 'supertest'
-
+//just a simple test for creating a product
 describe('product handler for creating product', () => {
   it('it should create a new product', async () => {
     const req = {

@@ -1,3 +1,4 @@
+//not using strict mode because it is just for prisma orm
 {
     "compilerOptions": {
       "sourceMap": true,
