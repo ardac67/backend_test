@@ -2,14 +2,14 @@ import prisma from '../db'
 
 export const createProduct = async (req, res) => {
   try {
-    const product = await prisma.product.create({
+    await prisma.product.create({
       data: {
         description: req.body.product_description,
         price: req.body.product_price,
         category_id: req.body.category_id
       }
     })
-    res.json({ message: 'created', data: { product } })
+    res.json({ message: 'created'})
     res.status(200)
   } catch (e) {
     console.log(e)

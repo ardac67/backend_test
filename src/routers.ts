@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { associateProduct, createProduct, deleteProduct, filterProducts, getAllProducts, updateProduct } from './handlers/product'
-import { createCategory, getAllCategories } from './handlers/category'
+import { createCategory, editCategory, getAllCategories } from './handlers/category'
 
 const router = Router()
 
@@ -12,4 +12,5 @@ router.put('/updateProduct/:id',updateProduct)
 router.delete('/deleteProduct/:id',deleteProduct)
 router.get("/getAllCategories",getAllCategories)
 router.get('/filter/:filter',filterProducts)
+router.put('/updateCategory/:id',editCategory)
 export default router
